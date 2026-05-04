@@ -96,7 +96,7 @@ git config --global init.defaultbranch "main"
 git commit --amend
 ```
 
-### 回滚
+#### 回滚
 
 将指定的提交覆盖到当前工作区根目录。
 
