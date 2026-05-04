@@ -223,12 +223,18 @@ git push -u 远程仓库别名 本地分支名
 
 1. 拉取远程信息。不会自动合并。
 
-```shell
-git fetch 远程仓库别名 远程分支名
-```
+    ```shell
+    git fetch 远程仓库别名 远程分支名
+    ```
 
 2. 将指定分支，合并到当前分支。
 
+    ```shell
+    git merge 指定分支名
+    ```
+
+使用 `git pull`，可以代替上面两步操作。
+
 ```shell
-git merge 指定分支名
+
 ```
