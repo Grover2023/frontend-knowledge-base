@@ -117,7 +117,8 @@ git restore --source 提交id .
 1. 查看分支。
 
     ```shell
-    git branch
+    git branch # 查看本地分支。
+    git branch -r # 查看远程分支。
     ```
 
 2. 分支重命名。
@@ -145,6 +146,7 @@ git restore --source 提交id .
 
     ```shell
     git branch -d 指定分支名 # 删除指定分支。
+    git branch -D 指定分支名 # 强制删除指定分支。
     ```
 
 ### 远程仓库
@@ -171,9 +173,9 @@ ssh-keygen -t ed25519 -C "注册github的邮箱地址" -f ~/.ssh/xxx_github_key
 
 3. 测试链接。
 
-```shell
-ssh -T git@配置的主机名
-```
+    ```shell
+    ssh -T git@配置的主机名
+    ```
 
 #### 仓库和别名
 
