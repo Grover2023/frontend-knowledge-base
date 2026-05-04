@@ -105,3 +105,44 @@ git commit --amend
 ```shell
 git restore --source 提交id .
 ```
+
+### 分支管理
+
+分支本质上是一个可移动的提交指针。
+
+不要在主分支上改动。
+
+#### 分支基本操作
+
+1. 查看分支。
+
+    ```shell
+    git branch
+    ```
+
+2. 分支重命名。
+
+    ```shell
+    git branch -m 新的分支名 # 重命名当前分支。
+    git branch -m 指定分支名 新的分支名 # 重命名指定分支。
+    ```
+
+3. 创建分支。
+
+    ```shell
+    git branch 新的分支名 # 创建一个新分支，指针和当前分支相同。
+    ```
+
+4. 切换分支。
+
+    ```shell
+    git switch 指定分支名 # 切换到指定分支。
+    git switch - # 切换到上一个分支。
+    git switch -c 新的分支名 # 创建并切换到新分支。
+    ```
+
+5. 删除分支。
+
+    ```shell
+    git branch -d 指定分支名 # 删除指定分支。
+    ```
