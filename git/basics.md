@@ -146,3 +146,58 @@ git restore --source 提交id .
     ```shell
     git branch -d 指定分支名 # 删除指定分支。
     ```
+
+### 远程仓库
+
+#### 生成密钥对
+
+```shell
+ssh-keygen -t ed25519 -C "注册github的邮箱地址" -f ~/.ssh/xxx_github_key
+```
+
+#### 配置密钥对规则
+
+1. 打开 `~/.ssh/config` （是一个无拓展名的文件），没有就创建一个。
+
+2. 配置规则。
+
+    ```yaml
+    # 规则1。
+    Host gmail.github.com # 当连接 git@gmail.github.com 时会匹配到此规则。
+        HostName github.com # 实际上链接发出的主机。
+        IdentityFile ~/.ssh/gmail_github_key # 使用的私钥文件。  
+        User git # 固定写法。
+    ```
+
+3. 测试链接。
+
+```shell
+ssh -T git@配置的主机名
+```
+
+#### 仓库和别名
+
+1. 查看当前远程仓库别名。
+
+    ```shell
+    git remote # 简要信息。
+    git remote -v # 详细信息。
+    ```
+
+2. 添加别名。
+
+    ```shell
+    git remote add 远程仓库别名 远程仓库ssh地址
+    ```
+
+3. 修改别名。
+
+    ```shell
+    git remote rename 指定的别名 新别名
+    ```
+
+4. 删除别名。
+
+    ```shell
+    git remote remove 指定的别名
+    ```
