@@ -277,7 +277,7 @@ git merge 指定分支 # 将指定分支合并到当前分支。
 ![rebase](./assets//rebase.svg)
 
 ```shell
-git rebase 指定分支 # 当分支基于指定分支变基。
+git rebase 指定分支 # 当前分支基于指定分支变基。
 ```
 
 优点：
