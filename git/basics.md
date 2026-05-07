@@ -292,6 +292,6 @@ git rebase 指定分支 # 当前分支基于指定分支变基。
 
 敬请期待。
 
-### worktree
+## worktree
 
 敬请期待。
