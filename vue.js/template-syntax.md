@@ -31,3 +31,27 @@ const nameCode = "<span>Name:Grover</span>"
 ```
 
 `v-html` 的作用：在当前组件实例上，将此元素的 innerHTML 与 nameCode 属性保持同步。
+
+## Attribute 绑定
+
+想要响应式的绑定一个 Attribute，应该使用 `v-bind` 指令：
+
+```vue
+<template>
+  <div>
+    <!-- 以下两种写法等价。 -->
+    <span v-bind:name="name">Name</span>
+    <span :age="age">Age</span>
+    <span :gender>Gender</span>
+  </div>
+</template>
+
+<script setup>
+const name = "Grover"
+const age = 18
+const gender = 'male'
+</script>
+```
+
+`v-bind` 指令，指示 Vue 将元素的 `name` Attribute 与组件的 `name` 属性保持一致。如果绑定的值是 `null` 或 `undefined`，那么该 Attribute 将会从渲染的元素上移除。
+
