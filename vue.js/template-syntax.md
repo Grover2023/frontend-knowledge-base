@@ -39,7 +39,7 @@ const nameCode = "<span>Name:Grover</span>"
 ```vue
 <template>
   <div>
-    <!-- 以下两种写法等价。 -->
+    <!-- 以下写法等价。 -->
     <span v-bind:name="name">Name</span>
     <span :age="age">Age</span>
     <span :gender>Gender</span>
@@ -55,3 +55,29 @@ const gender = 'male'
 
 `v-bind` 指令，指示 Vue 将元素的 `name` Attribute 与组件的 `name` 属性保持一致。如果绑定的值是 `null` 或 `undefined`，那么该 Attribute 将会从渲染的元素上移除。
 
+### 布尔型 Attribute
+
+Vue 代码如下：
+
+```vue
+<template>
+  <div>
+    <button :disabled="true">Button:true</button>
+    <button :disabled="false">Button:false</button>
+    <button :disabled="''">Button:''</button>
+  </div>
+</template>
+```
+
+生成的 DOM 结构如下：
+
+```html
+<div>
+  <button disabled="">Button:true</button>
+  <button>Button:false</button>
+  <button disabled="">Button:''</button>
+</div>
+```
+
+当一个布尔型 Attribute 被赋值为一个真值或一个空字符串时，元素会包含该 Attribute 属性。
+当一个布尔型 Attribute 被赋值为一个假值时，元素会忽略该 Attribute 属性。
