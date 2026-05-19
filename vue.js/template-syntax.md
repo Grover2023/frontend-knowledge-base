@@ -1,4 +1,4 @@
-# 模版语法
+# template-syntax
 
 ## 文本插值
 
