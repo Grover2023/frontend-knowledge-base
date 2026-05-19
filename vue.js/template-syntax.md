@@ -65,6 +65,7 @@ Vue 代码如下：
     <button :disabled="true">Button:true</button>
     <button :disabled="false">Button:false</button>
     <button :disabled="''">Button:''</button>
+    <button disabled>Button</button>
   </div>
 </template>
 ```
