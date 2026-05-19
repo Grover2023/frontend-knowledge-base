@@ -59,8 +59,6 @@ const gender = 'male'
 
 #### 应用于原生标签
 
-Vue 代码如下：
-
 ```vue
 <template>
   <div>
