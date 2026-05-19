@@ -1,6 +1,4 @@
-# template-syntax
-
-# 文本插值
+## 文本插值
 
 ```vue
 <template>
@@ -55,9 +53,9 @@ const gender = 'male'
 
 `v-bind` 指令，指示 Vue 将元素的 Attribute 与组件的属性保持一致。如果绑定的值是 `null` 或 `undefined`，那么该 Attribute 将会从渲染的元素上移除。
 
-### 布尔型 Attribute
+## 布尔型 Attribute
 
-#### 应用于原生标签
+### 应用于原生标签
 
 ```vue
 <template>
@@ -77,7 +75,7 @@ const gender = 'male'
 当一个布尔型 Attribute 被赋值为一个真值或一个空字符串时，元素会包含该 Attribute 属性。
 当一个布尔型 Attribute 被赋值为一个假值时，元素会忽略该 Attribute 属性。
 
-#### 应用于自定义组件
+### 应用于自定义组件
 
 ```vue
 <template>
@@ -94,7 +92,7 @@ const gender = 'male'
 </template>
 ```
 
-### 动态绑定多个值
+## 动态绑定多个值
 
 ```vue
 <template>
@@ -103,7 +101,7 @@ const gender = 'male'
 </template>
 ```
 
-### 使用 JavaScript 表达式
+## 使用 JavaScript 表达式
 
 在所有的数据绑定中，都支持完整的 JavaScript 表达式。
 
