@@ -57,28 +57,41 @@ const gender = 'male'
 
 ### 布尔型 Attribute
 
+#### 应用于原生标签
+
 Vue 代码如下：
 
 ```vue
 <template>
   <div>
     <button :disabled="true">Button:true</button>
-    <button :disabled="false">Button:false</button>
+    <!-- <button disabled>Button:true</button> -->
     <button :disabled="''">Button:''</button>
+    <!-- <button disabled>Button:''</button> -->
     <button disabled>Button</button>
+    <!-- <button disabled>Button</button> -->
+    <button :disabled="false">Button:false</button>
+    <!-- <button>Button:false</button> -->
   </div>
 </template>
 ```
 
-渲染生成的 DOM 结构如下：
-
-```html
-<div>
-  <button disabled="">Button:true</button>
-  <button>Button:false</button>
-  <button disabled="">Button:''</button>
-</div>
-```
-
 当一个布尔型 Attribute 被赋值为一个真值或一个空字符串时，元素会包含该 Attribute 属性。
 当一个布尔型 Attribute 被赋值为一个假值时，元素会忽略该 Attribute 属性。
+
+#### 应用于自定义组件
+
+```vue
+<template>
+  <div>
+    <MyComponent :is-disabled="true" />
+    <!-- Proxy {isDisabled: true} -->
+    <MyComponent :is-disabled="''" />
+    <!-- Proxy {isDisabled: true} -->
+    <MyComponent is-disabled />
+    <!-- Proxy {isDisabled: true} -->
+    <MyComponent :is-disabled="false" />
+    <!-- Proxy {isDisabled: false} -->
+  </div>
+</template>
+```
