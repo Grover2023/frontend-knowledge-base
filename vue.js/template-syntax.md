@@ -93,3 +93,30 @@ const gender = 'male'
   </div>
 </template>
 ```
+
+### 动态绑定多个值
+
+```vue
+<template>
+  <div v-bind="{ name: 'Grover', age: 18, gender: 'male' }"></div>
+  <!-- <div name="Grover" age="18" gender="male"></div> -->
+</template>
+```
+
+### 使用 JavaScript 表达式
+
+在所有的数据绑定中，都支持完整的 JavaScript 表达式。
+
+```vue
+<template>
+  {{ number + 1 }}
+  {{ ok ? 'YES' : 'NO' }}
+  {{ message.split('').reverse().join('') }}
+  {{ formatDate(date) }}
+  <div :id="`list-${id}`"></div>
+</template>
+```
+
+## 受限的全局访问
+
+模版中的表达式，将被沙盒化。仅能访问到有限的全局对象列表。
