@@ -53,7 +53,7 @@ const gender = 'male'
 </script>
 ```
 
-`v-bind` 指令，指示 Vue 将元素的 `name` Attribute 与组件的 `name` 属性保持一致。如果绑定的值是 `null` 或 `undefined`，那么该 Attribute 将会从渲染的元素上移除。
+`v-bind` 指令，指示 Vue 将元素的 Attribute 与组件的属性保持一致。如果绑定的值是 `null` 或 `undefined`，那么该 Attribute 将会从渲染的元素上移除。
 
 ### 布尔型 Attribute
 
@@ -69,7 +69,7 @@ Vue 代码如下：
 </template>
 ```
 
-生成的 DOM 结构如下：
+渲染生成的 DOM 结构如下：
 
 ```html
 <div>
