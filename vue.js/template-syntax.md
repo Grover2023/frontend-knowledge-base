@@ -32,6 +32,8 @@ const nameCode = "<span>Name:Grover</span>"
 
 `v-html` 的作用：在当前组件实例上，将此元素的 innerHTML 与 nameCode 属性保持同步。
 
+不能使用 `v-html` 来拼接组合模版。因为 Vue 不是一个基于字符串的模版引擎。在使用 Vue 时，应当使用组件作为 UI 重用和组合的基本单元。
+
 ## Attribute 绑定
 
 想要响应式的绑定一个 Attribute，应该使用 `v-bind` 指令：
@@ -70,6 +72,10 @@ const gender = 'male'
     <!-- <button disabled>Button</button> -->
     <button :disabled="false">Button:false</button>
     <!-- <button>Button:false</button> -->
+    <button :disabled="null">Button:null</button>
+    <!-- <button>Button:null</button> -->
+    <button :disabled="undefined">Button:undefined</button>
+    <!-- <button>Button:undefined</button> -->
   </div>
 </template>
 ```
@@ -90,6 +96,10 @@ const gender = 'male'
     <!-- Proxy {isDisabled: true} -->
     <MyComponent :is-disabled="false" />
     <!-- Proxy {isDisabled: false} -->
+    <MyComponent :is-disabled="null" />
+    <!-- Proxy {isDisabled: null} -->
+    <MyComponent :is-disabled="undefined" />
+    <!-- Proxy {isDisabled: undefined} -->
   </div>
 </template>
 ```
