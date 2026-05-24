@@ -200,3 +200,62 @@ setTimeout(() => {
   // 我们必须传入整个对象以保持响应性
   callSomeFunction(state.count)
   ```
+
+## 解包细节
+
+1. ref 对象作为 reactive 对象的属性，会自动解包。
+
+  ```vue
+  <script setup>
+  import { ref, reactive } from 'vue';
+
+  const name = ref('Grover');
+  const grover = reactive({ name });
+
+  console.log('grover.name:', grover.name) // grover.name: Grover
+  console.log('name.value:', name.value) // name.value: Grover
+  </script>
+  ```
+
+2. ref 对象作为 shallowReactive 对象的属性，不会自动解包。
+
+  ```vue
+  <script setup>
+  import { ref, shallowReactive } from 'vue';
+
+  const name = ref('Grover');
+  const grover = shallowReactive({ name });
+
+  console.log('grover.name.value:', grover.name.value); // grover.name.value: Grover
+  console.log('name.value:', name.value); // name.value: Grover
+  </script>
+  ```
+
+3. ref 对象作为数组、集合的元素时，不会自动解包。
+
+  ```js
+  const books = reactive([ref('Vue 3 Guide')])
+  // 这里需要 .value
+  console.log(books[0].value)
+
+  const map = reactive(new Map([['count', ref(0)]]))
+  // 这里需要 .value
+  console.log(map.get('count').value)
+  ```
+
+4. 出现在模板中时，顶级的 ref 对象，会自动解包。非顶级的 ref 对象，不会自动解包。
+
+  ```vue
+  <template>
+    <div>
+      <p>Name:{{ name }}; Age:{{ age.data.value }}</p>
+    </div>
+  </template>
+
+  <script setup>
+  import { ref } from 'vue';
+
+  const name = ref('Grover');
+  const age = { data: ref(18) };
+  </script>
+  ```
