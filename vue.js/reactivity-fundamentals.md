@@ -84,36 +84,6 @@ setTimeout(() => {
 
 对于 `shallowRef` 来说，只有对 `.value` 的访问会被追踪。
 
-## DOM 更新时间
-
-当修改响应式数据时，DOM 会被自动更新。但需要注意的是，DOM 更新不是同步的。
-
-要等待 DOM 更新完成后，再执行一些额外代码，可以使用 `nextTick`：
-
-```vue
-<template>
-  <div class="container">Habits:{{ habits }}</div>
-</template>
-
-<script setup>
-import { nextTick, onMounted, ref } from "vue";
-
-let container = null;
-const habits = ref(['唱', '跳', 'Rap', '篮球']);
-
-setTimeout(async () => {
-  habits.value.push('好好学习', '天天向上');
-  console.log('container.innerText:', container.innerText); // container.innerText: Habits:[ "唱", "跳", "Rap", "篮球" ]
-  await nextTick();
-  console.log('container.innerText:', container.innerText); // container.innerText: Habits:[ "唱", "跳", "Rap", "篮球", "好好学习", "天天向上" ]
-}, 2000);
-
-onMounted(() => {
-  container = document.querySelector('.container');
-})
-</script>
-```
-
 ## reactive
 
 当 `ref` 的值是一个对象时，`ref()` 会在内部调用 `reactive`。
@@ -259,3 +229,33 @@ setTimeout(() => {
   const age = { data: ref(18) };
   </script>
   ```
+
+## DOM 更新时间
+
+当修改响应式数据时，DOM 会被自动更新。但需要注意的是，DOM 更新不是同步的。
+
+要等待 DOM 更新完成后，再执行一些额外代码，可以使用 `nextTick`：
+
+```vue
+<template>
+  <div class="container">Habits:{{ habits }}</div>
+</template>
+
+<script setup>
+import { nextTick, onMounted, ref } from "vue";
+
+let container = null;
+const habits = ref(['唱', '跳', 'Rap', '篮球']);
+
+setTimeout(async () => {
+  habits.value.push('好好学习', '天天向上');
+  console.log('container.innerText:', container.innerText); // container.innerText: Habits:[ "唱", "跳", "Rap", "篮球" ]
+  await nextTick();
+  console.log('container.innerText:', container.innerText); // container.innerText: Habits:[ "唱", "跳", "Rap", "篮球", "好好学习", "天天向上" ]
+}, 2000);
+
+onMounted(() => {
+  container = document.querySelector('.container');
+})
+</script>
+```
