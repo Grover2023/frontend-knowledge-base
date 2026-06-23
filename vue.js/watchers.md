@@ -76,4 +76,67 @@ watch 默认是懒执行的：仅当数据源变化时，才会执行回调。
 
 只跟踪回调函数中被使用到的属性，而不是递归的跟踪所有的属性。
 
-watchEffect 在回调函数同步执行期间，才会追踪依赖。在使用异步回调时，只有在第一个 `await` 正常工作前，访问到的属性才会被追踪。
+watchEffect 在回调函数同步执行期间，才会追踪依赖。在使用异步回调时，只有在第一个 `await` 正常工作之前，访问到的属性才会被追踪。
+
+## 副作用清理
+
+onWatcherCleanup（3.5 以上版本） 用于注册侦听器清理函数。
+
+必须在回调函数的同步执行期间，才可以调用。在使用异步回调时，只有在第一个 `await` 正常工作之前，才可以调用它。
+
+被注册的函数的执行时机：
+
+1. 侦听器重新执行前。
+2. 侦听器停止时。
+3. 组件卸载时。
+
+使用举例如下：
+
+```vue
+import { watch, onWatcherCleanup } from 'vue'
+
+watch(id, (newId) => {
+  const controller = new AbortController()
+
+  fetch(`/api/${newId}`, { signal: controller.signal }).then(() => {
+    // 回调逻辑
+  })
+
+  onWatcherCleanup(() => {
+    // 终止过期请求
+    controller.abort()
+  })
+})
+```
+
+## 回调的触发时机
+
+`flush: 'pre'`：DOM 更新前执行。
+`flush: 'post'`：DOM 更新后执行。
+`flush: 'sync'`：同步立即执行。
+
+## 停止侦听器
+
+如果一个侦听器是在异步回调函数中创建的，那么你必须手动停止它，以防止内存泄露。
+
+举例如下：
+
+```vue
+const unwatch = watchEffect(() => {})
+
+// ...当该侦听器不再需要时
+unwatch()
+```
+
+如果需要等待一些异步数据，可以使用条件式的侦听逻辑：
+
+```vue
+// 需要异步请求得到的数据
+const data = ref(null)
+
+watchEffect(() => {
+  if (data.value) {
+    // 数据加载后执行某些操作...
+  }
+})
+```
