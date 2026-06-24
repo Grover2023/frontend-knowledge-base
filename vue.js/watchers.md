@@ -44,10 +44,14 @@ watch(countObj, (newVal, oldVal) => {
   console.log('单个响应式对象', newVal.count, oldVal.count, newVal === oldVal); // 单个响应式对象 1 1 true
 })
 
+// getter 在组件每次重新渲染时，都会执行。
+// watch 监听的是 getter 的返回值。返回值发生变化时，回调函数才会执行。
 watch(() => countObj.count, (newVal, oldVal) => {
   console.log('单个 getter（返回原始值）', newVal, oldVal, newVal === oldVal); // 单个 getter 1 0 false
 })
 
+// getter 在组件每次重新渲染时，都会执行。
+// watch 监听的是 getter 的返回值。返回值发生变化时，回调函数才会执行。
 watch(() => countObj, (newVal, oldVal) => {
   console.log('单个 getter（返回引用值）', newVal.count, oldVal.count, newVal === oldVal); // 单个 getter（返回引用值） 1 1 true
 }, { deep: true })
