@@ -1,6 +1,6 @@
 # components-basics
 
-## 基础使用
+## Props 基础使用
 
 GreetingComponent.vue 如下：
 
@@ -29,7 +29,7 @@ const msg = ref("Hello world.");
 </script>
 ```
 
-## 响应式 Props 结构
+## 响应式 Props 解构
 
 在 3.5 及以上版本，当在同一个 `<script setup>` 代码块中，访问由 `defineProps` 解构的变量时，Vue 编译器会自动在前面添加 `props.`。下方两段代码等价。
 
