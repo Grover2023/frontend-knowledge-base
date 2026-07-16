@@ -1,4 +1,4 @@
-# components-basics
+# props
 
 ## Props 基础使用
 
